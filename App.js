@@ -23,9 +23,12 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import AppNavigation from './src/config/navigation'
+import AppNavigation from './src/config/navigation';
+import SplashScreen from 'react-native-splash-screen';
+import { useEffect } from "react";
 
 const App = () => {
+  useEffect(() => SplashScreen.hide());
   return (
     <AppNavigation/>
   );
