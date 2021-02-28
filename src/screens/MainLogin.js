@@ -102,15 +102,6 @@ login = (email,password)=>{
                     >
                         <Text style={{color:"white"}}>Sign Up</Text>
                     </Button>
-                    {/* <Button
-                    style={{marginTop:10}}
-                    full
-                    rounded
-                    primary
-                    onPress={() => this.props.navigation.navigate('Home')}
-                    >
-                        <Text style={{color:"white"}}>Navigate</Text>
-                    </Button> */}
                 </Form>
             </Container>
         </Container>

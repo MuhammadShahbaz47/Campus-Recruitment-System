@@ -13,11 +13,11 @@ function AppNavigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+      <Stack.Screen name="Main Login" component={MainLogin} options= {{headerShown: false}}/>
       <Stack.Screen name="LoginOptions" component={loginOptions} options= {{headerShown: false}}/>
-        <Stack.Screen name="Main Login" component={MainLogin} options= {{headerShown: false}}/>
-        <Stack.Screen name="CompanyPage" component={CompanyPage} />
-        <Stack.Screen name="StudentPage" component={StudentPage} />
-        <Stack.Screen name="AdminPage" component={AdminPage} />
+        <Stack.Screen name="CompanyPage" component={CompanyPage} options= {{headerShown: false}}/>
+        <Stack.Screen name="StudentPage" component={StudentPage} options= {{headerShown: false}}/>
+        <Stack.Screen name="AdminPage" component={AdminPage} options= {{headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
