@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 import * as firebase from 'firebase';
-import {Container,Content,Header,Form,Input,Item,Button,Label} from 'native-base';
+import {Container,Content,Header,Form,Input,Item,Button,Label,Icon} from 'native-base';
 import { createStackNavigator, createAppContainer } from '@react-navigation/stack';
 
 var firebaseConfig = {
@@ -43,20 +43,26 @@ signUp = (email,password)=>{
     }
 }
 login = (email,password)=>{
-    try{
-        firebase.auth().signInWithEmailAndPassword(email,password)
-        .then(function(user){
-            console.log(user)
-        }); 
+
+    const nav = this.props.navigation;
+      
+    firebase.auth().signInWithEmailAndPassword(email,password)
+            .then( user => {
+                console.log(user)
+                 nav.replace('LoginOptions')
+            }). catch( error => {
+                 console.log(error)
+                 alert("Login Failed!")
+           })
     }
-    catch(error){
-        console.log(error.toString())
-    }
-    this.props.navigation.replace('Home')
-}
 
     render(){
         return(
+        <Container style={styles.main}>
+            <Container style={styles.Logo}>
+            <Image style={{width:150,height:150}} source={require('../images/logo.png')}/>
+            <Text style={styles.LogoText}>Campus Recruitment System</Text>
+            </Container>
             <Container style={styles.container}>
                 <Form>
                     <Item floatingLabel>
@@ -107,15 +113,31 @@ login = (email,password)=>{
                     </Button> */}
                 </Form>
             </Container>
+        </Container>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
+    main: {
         flex:1,
         backgroundColor: 'rgb(249, 250, 252)',
-        justifyContent:"center",
+        paddingBottom:150,
+      },
+    Logo: {
+        backgroundColor: 'rgb(249, 250, 252)',
+        justifyContent:"flex-end",
+        alignItems:"center"
+      },
+    LogoText: {
+        color: 'green',
+        fontSize: 20,
+        paddingTop:5,
+        fontWeight: 'bold'
+      },
+    container: {
+        backgroundColor: 'rgb(249, 250, 252)',
+        justifyContent:"flex-start",
         padding:10
       },
     })
